@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💌 Open Letter</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  text-align:center;
+  background:linear-gradient(135deg,#ff9a9e,#fecfef);
+  overflow-x:hidden;
+}
+
+/* ENVELOPE */
+.envelope{
+  width:200px;
+  height:120px;
+  background:#ff4d6d;
+  margin:120px auto;
+  position:relative;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.envelope:before{
+  content:"";
+  position:absolute;
+  top:-60px;
+  left:0;
+  border-left:100px solid transparent;
+  border-right:100px solid transparent;
+  border-bottom:60px solid #ff758f;
+}
+
+.openText{
+  color:white;
+  padding-top:45px;
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* LETTER */
+#letter{
+  display:none;
+  background:white;
+  margin:20px;
+  padding:20px;
+  border-radius:15px;
+  animation:pop 0.6s ease;
+}
+
+@keyframes pop{
+  0%{transform:scale(0);}
+  100%{transform:scale(1);}
+}
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  color:red;
+  font-size:20px;
+  animation:float 3s linear forwards;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-500px);opacity:0;}
+}
+
+/* BUTTON */
+.moreBtn{
+  padding:10px 15px;
+  background:#ff4d6d;
+  color:white;
+  border:none;
+  border-radius:10px;
+  margin-top:10px;
+}
+
+/* GALLERY */
+#gallery{
+  display:none;
+  margin-top:20px;
+}
+
+#gallery img,video{
+  width:150px;
+  height:150px;
+  object-fit:cover;
+  border-radius:15px;
+  margin:8px;
+}
+#finalPopup button{
+  padding:12px 18px;
+  background:#ff4d6d;
+  color:white;
+  border:none;
+  border-radius:12px;
+}
+
+#yesBtn{
+  padding:12px 18px;
+  font-size:18px;
+  background:linear-gradient(45deg,#ff4d6d,#ff758f);
+  color:white;
+  border:none;
+  border-radius:12px;
+  margin:10px;
+}
+
+#noBtn{
+  padding:12px 18px;
+  font-size:18px;
+  background:#333;
+  color:white;
+  border:none;
+  border-radius:12px;
+  position:relative;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ENVELOPE -->
+<div class="envelope" onclick="openLetter()">
+  <div class="openText">OPEN 💌</div>
+</div>
+
+<!-- LETTER -->
+<div id="letter">
+  <h2>Dear neeru... first of all i want to say that you are the best person who came in my life... i know that mai tumhe itna dikha nhi paata but i love you so much and you actually mean the most to me my love❤️ <br>just know that i'm always here for you and i love you❤️</h2>
+  <p>
+    You found this little letter 💕  
+    But wait… want to see something more beautiful? ✨
+  </p>
+
+  <button class="moreBtn" onclick="showGallery()">Tap Here 💖</button>
+
+  <!-- GALLERY -->
+  <div id="gallery">
+    <h3>📸</h3>
+
+    <!-- PHOTOS -->
+         <img src="pic2.jpeg">
+    <video src="vdo5.mp4" controls></video>
+    <img src="pic3.jpeg">
+    <img src="pic4.jpeg">
+    <img src="pic5.jpeg">
+    <video src="vdo4.mp4" controls></video>
+    <img src="pic6.jpeg">
+    <img src="pic7.jpeg">
+    <img src="pic8.jpeg">
+    <video src="vdo3.mp4" controls></video>
+    <img src="pic10.jpeg">
+    <img src="pic11.jpeg">
+    <img src="pic12.jpeg">
+    <video src="vdo2.mp4" controls></video>
+    <img src="pic9.jpeg">
+    <img src="pic13.jpeg">
+
+    <!-- VIDEOS -->
+    <video src="vdo1.mp4" controls></video>
+  </div>
+</div>
+<!-- FINAL POPUP -->
+<div id="finalPopup" style="display:none;">
+  <h2>Now the final question... 💌</h2>
+  <button onclick="showValentine()">Tap to continue 💖</button>
+</div>
+
+<!-- VALENTINE QUESTION -->
+<div id="valentineBox" style="display:none; margin-top:20px;">
+  <h2>Will you be my Valentine? 💖</h2>
+
+  <button id="yesBtn" onclick="sayYes()">YES 💕</button>
+  <button id="noBtn" onmouseover="moveNo()">NO 😜</button>
+</div>
+
+
+<script>
+function openLetter(){
+  document.querySelector(".envelope").style.display="none";
+  document.getElementById("letter").style.display="block";
+
+  // hearts burst
+  for(let i=0;i<20;i++){
+    let heart=document.createElement("div");
+    heart.innerHTML="❤️";
+    heart.className="heart";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.bottom="0";
+    heart.style.fontSize=(20+Math.random()*20)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),3000);
+  }
+}
+
+function showGallery(){
+  document.getElementById("gallery").style.display="block";
+}
+function showGallery(){
+  document.getElementById("gallery").style.display="block";
+  document.getElementById("finalPopup").style.display="block";
+}
+
+function showValentine(){
+  document.getElementById("finalPopup").style.display="none";
+  document.getElementById("valentineBox").style.display="block";
+}
+
+function moveNo(){
+  let btn=document.getElementById("noBtn");
+  btn.style.position="absolute";
+  btn.style.left=Math.random()*300+"px";
+  btn.style.top=Math.random()*300+"px";
+}
+
+function sayYes(){
+  alert("YAYYY 💖");
+
+  // heart celebration rain
+  for(let i=0;i<50;i++){
+    let heart=document.createElement("div");
+    heart.innerHTML="💖";
+    heart.className="heart";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.bottom="0";
+    heart.style.fontSize=(20+Math.random()*30)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),3000);
+  }
+}
+
+</script>
+
+</body>
+</html>
